@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>HR application</title>
+</head>
+<body>
+
+	<h1>List of employees:</h1>
+
+	<table >
+	<thead>
+	<tr>
+		<th>Id
+		<th>Name
+		<th>Title
+		<th>Salary
+		<th>Entry date
+		<th>Delete employee
+	<tbody>
+		<tr th:each="employee : ${employees}">
+			<td th:text="${employee.id}">Id
+			<td><a th:text="${employee.name}" th:href="@{/editemployee/{id}(id=${employee.id})}">Name</a>
+			<td th:text="${employee.title}">Title
+			<td th:text="${employee.salary}">Salary
+			<td th:text="${employee.entryDate}">EntryDate
+			<td><a th:href="@{/deleteemployee/{id}(id=${employee.id})}">Delete</a>
+	</table>
+	
+	<h2>Add a new employee:</h2>
+	
+	<form th:action="@{/employees}" method="post" th:object="${newEmployee}">
+		<table border>
+			<tbody>
+				<tr><td>Id: <td><input th:field="*{id}" />
+				<tr><td>Name: <td><input th:field="*{name}" />
+				<tr><td>Title: <td><input th:field="*{title}" />
+				<tr><td>Salary: <td><input th:field="*{salary}" />
+				<tr><td>Entry date: <td><input th:field="*{entryDate}" />
+				<tr><td><input type="submit" value="Add" />
+			</tbody>
+		</table>
+	</form>
+
+</body>
+</html>

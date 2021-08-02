@@ -1,0 +1,37 @@
+hr:
+  test: false
+  jwt:
+    secret: whatever
+    algorithm: HMAC256
+    timeout: 250
+    issuer: Hr Application 
+  raise:
+    def:
+      percent: 5
+    smart:
+      years:    40, 30, 20, 10, 5, 2.5
+      percents: 40, 30, 20, 10, 5, 2
+logging:
+  level:
+    org:
+      springframework:
+        security: debug
+spring:
+  profiles:
+    active: smart
+  thymeleaf:  
+    cache: false 
+  mvc:
+    format:
+      date: yyyy-MM-dd
+      time: HH:mm:ss
+      date-time: yyyy-MM-dd HH:mm:ss
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: create
+    open-in-view: false
+  datasource:
+    url: jdbc:postgresql://localhost:5432/webuni
+    username: antares
+    password:
